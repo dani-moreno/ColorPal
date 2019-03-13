@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ColorPal - Color Generator</title>
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="app">
+        <div class="colores">
+            <div class="color"></div>
+        </div>
+
+        <div class="panel">
+            <div class="contenedor">
+            <h4>Initial color</h4>
+            <form>
+                <div>
+                <label for="hue">Hue</label>
+                <input id="hue" type="number" min="0" max="360" value="218">
+                </div>
+
+                <div class="per" data-info="%">
+                <label for="sat">Saturation</label>
+                <input id="sat" type="number" min="0" max="100" value="94">
+                </div>
+
+                <div class="per" data-info="%">
+                <label for="lig">Lightness</label>
+                <input id="lig" type="number" min="0" max="100" value="67">
+                </div>
+            </form>
+            </div>
+
+            <div class="barra"></div>
+
+            <div class="datos">
+            <div class="contenedor doble">
+                <h4>Light colors</h4>
+                <form>
+                <div>
+                    <label for="l-amount">Amount</label>
+                    <input id="l-amount" type="number" min="0" max="10" value="3">
+                </div>
+                
+                <div class="per" data-info="º">
+                    <label for="l-hue">Hue</label>
+                    <input id="l-hue" type="number" min="0" max="360" value="0">
+                </div>
+
+                <div class="per" data-info="%">
+                    <label for="l-sat">Saturation</label>
+                    <input id="l-sat" type="number" min="0" max="100" value="0">
+                </div>
+
+                <div class="per" data-info="%">
+                    <label for="l-lig">Lightness</label>
+                    <input id="l-lig" type="number" min="0" max="20" value="3">
+                </div>
+                </form>
+            </div>
+            <div class="contenedor doble">
+                <h4>Dark colors</h4>
+                <form>
+                <div>
+                    <label for="d-amount">Amount</label>
+                    <input id="d-amount" type="number" min="0" max="10" value="3">
+                </div>
+                
+                <div class="per" data-info="º">
+                    <label for="d-hue">Hue</label>
+                    <input id="d-hue" type="number" min="0" max="360" value="0">
+                </div>
+
+                <div class="per" data-info="%">
+                    <label for="d-sat">Saturation</label>
+                    <input id="d-sat" type="number" min="0" max="100" value="0">
+                </div>
+
+                <div class="per" data-info="%">
+                    <label for="d-lig">Lightness</label>
+                    <input id="d-lig" type="number" min="0" max="20" value="3">
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal">
+        <div class="close" tabindex="0"></div>
+        <div class="hsl">
+            <div>
+            <small>H</small>
+            <p id="m_h">100</p>
+            </div>
+            
+            <div>
+            <small>S</small>
+            <p id="m_s">100%</p>
+            </div>
+            
+            <div>
+            <small>L</small>
+            <p id="m_l">100%</p>
+            </div>
+        </div>
+        
+        <div class="barra"></div>
+        
+        <div class="rgb">
+            <div>
+            <small>R</small>
+            <p id="m_r">252</p>
+            </div>
+            
+            <div>
+            <small>G</small>
+            <p id="m_g">252</p>
+            </div>
+            
+            <div>
+            <small>B</small>
+            <p id="m_b">252</p>
+            </div>
+        </div>
+        
+        <a id="btn-hsl" href="#" data-clipboard-text="" class="boton copy">Copy HSL</a>
+        <a id="btn-rgb" href="#" data-clipboard-text="" class="boton copy">Copy RGB</a>
+        </div>
+
+        <a href="#" class="export">Export code</a>
+        <div class="overlay"></div>
+        <div class="menu">
+            <div class="titulo">Export code</div>
+            <div class="close" tabindex="0"></div>
+
+            <div class="opciones">
+                <div>
+                    <label for="nombre">Color name</label>
+                    <input type="text" id="nombre" value="Color" maxlength="20" placeholder="Insert a name for the color">
+                </div>
+
+                <div>
+                    <div class="switch">
+                        <span id="code-hsl" class="active">HSL</span>
+                        <span id="code-rgb">RGB</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="switch">
+                        <span id="format-css" class="active">CSS</span>
+                        <span id="format-scss">SCSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenido c-css">
+                <div class="til">CSS Variables</div>
+                <code id="css-var"></code>
+
+                <div class="til">CSS Classes</div>
+                <code id="css-clas"></code>
+            </div>
+
+            <div class="contenido c-scss" style="display:none;">
+                <div class="til">SCSS Variables</div>
+                <code id="scss-var"></code>
+
+                <div class="til">SCSS Classes</div>
+                <code id="scss-clas"></code>
+            </div>
+        </div>
+
+        <footer>
+            <div>
+                <a href="#" id="logo">
+                <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 227.8 51.6" style="enable-background:new 0 0 227.8 51.6;" xml:space="preserve">
+                <path class="st0" d="M8.6,25.8c0,4.8,3.8,8.6,8.6,8.6c3.2,0,5.9-1.8,7.3-4.4h9.2c-2,7-8.6,12.2-16.6,12.2C7.7,42.2,0,34.9,0,25.8
+                    C0,16.8,7.7,9.4,17.2,9.4c8,0,14.8,5.3,16.7,12.4h-9.1c-1.5-2.8-4.3-4.6-7.6-4.6C12.5,17.2,8.6,21.1,8.6,25.8z"/>
+                <path class="st0" d="M53.1,42.2c-9.5,0-17.1-7.3-17.1-16.4c0-9.1,7.6-16.4,17.1-16.4c9.5,0,17.1,7.3,17.1,16.4
+                    C70.2,34.9,62.5,42.2,53.1,42.2z M53.1,17.2c-4.7,0-8.5,3.8-8.5,8.6c0,4.8,3.8,8.6,8.5,8.6c4.7,0,8.5-3.8,8.5-8.6
+                    C61.6,21.1,57.8,17.2,53.1,17.2z"/>
+                <path class="st0" d="M74.2,0h8.6v41.3h-8.6V0z"/>
+                <path class="st0" d="M140.8,9.4h1.1v7.8c-4.8,0-8.6,3.8-8.6,8.6v15.5h-8.6V25.8C124.7,16.8,131.3,9.4,140.8,9.4z"/>
+                <path class="st0" d="M177.4,25.8c0,9.1-7.6,16.4-17,16.4c-3.3,0-6.3-1.3-8.4-3.4v12.9h-8.6V25.8c0-9.1,7.6-16.4,17-16.4
+                    S177.4,16.8,177.4,25.8z M168.8,25.8c0-4.8-3.8-8.6-8.6-8.6c-4.8,0-8.6,3.8-8.6,8.6c0,4.8,3.8,8.6,8.6,8.6
+                    C165,34.4,168.8,30.6,168.8,25.8z"/>
+                <path class="st0" d="M213.8,25.8v15.5h-8v-3.8c-2,2.9-5.3,4.8-9,4.8c-9.4,0-17-7.3-17-16.4c0-9.1,7.6-16.4,17-16.4
+                    S213.8,16.8,213.8,25.8z M205.5,25.8c0-4.8-3.8-8.6-8.6-8.6c-4.8,0-8.6,3.8-8.6,8.6c0,4.8,3.8,8.6,8.6,8.6
+                    C201.7,34.4,205.5,30.6,205.5,25.8z"/>
+                <path class="st0" d="M219.3,0h8.6v41.3h-8.6V0z"/>
+                <path class="st0" d="M103.9,9.4c-9.4,0-17.1,7.3-17.1,16.4s7.7,16.4,17.1,16.4S121,34.9,121,25.8S113.4,9.4,103.9,9.4z M96.7,27.8
+                    c-2,0-3.6-1.6-3.6-3.5c0-1.9,1.6-3.5,3.6-3.5s3.6,1.6,3.6,3.5C100.3,26.2,98.7,27.8,96.7,27.8z M103.9,33.8c-1.8,0-3.3-1.3-3.6-2.9
+                    c-0.1-0.3,0.2-0.6,0.5-0.6h6.1c0.3,0,0.6,0.3,0.5,0.6C107.2,32.5,105.7,33.8,103.9,33.8z M111.2,27.8c-2,0-3.6-1.6-3.6-3.5
+                    c0-1.9,1.6-3.5,3.6-3.5s3.6,1.6,3.6,3.5C114.8,26.2,113.2,27.8,111.2,27.8z"/>
+                </svg>
+                </a>
+            </div>
+            <div>
+                Made by <a href="http://dazlog.com" target="_blank">Dazlog</a>
+            </div>
+        </footer>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+    <script src="https://unpkg.com/native-toast@2.0.0/dist/native-toast.min.js"></script>
+    <script type="text/javascript" src="js/app-dist.js"></script>
+</body>
+</html>
