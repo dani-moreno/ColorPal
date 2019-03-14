@@ -133,16 +133,19 @@
         <a id="btn-rgb" href="#" data-clipboard-text="" class="boton copy">Copy RGB</a>
         </div>
 
-        <a href="#" class="export">Export code</a>
+        <a href="#" class="export">Export colors</a>
         <div class="overlay"></div>
         <div class="menu">
-            <div class="titulo">Export code</div>
+            <div class="titulo">
+                <div class="tab active" id="t-code">Export code</div>
+                <div class="tab" id="t-sketch">Export Sketch palette</div>
+            </div>
             <div class="close" tabindex="0"></div>
 
             <div class="opciones">
                 <div>
                     <label for="nombre">Color name</label>
-                    <input type="text" id="nombre" value="Color" maxlength="20" placeholder="Insert a name for the color">
+                    <input type="text" autocomplete="off" id="nombre" value="Color" maxlength="20" placeholder="Insert a name for the color">
                 </div>
 
                 <div>
@@ -158,22 +161,32 @@
                         <span id="format-scss">SCSS</span>
                     </div>
                 </div>
+
+                <div style="display:none;">
+                    <a href="#" download="data.sketchpalette">Save palette</a>
+                </div>
             </div>
 
-            <div class="contenido c-css">
-                <div class="til">CSS Variables</div>
-                <code id="css-var"></code>
+            <div class="c-code show">
+                <div class="contenido c-css">
+                    <div class="til">CSS Variables</div>
+                    <code id="css-var"></code>
 
-                <div class="til">CSS Classes</div>
-                <code id="css-clas"></code>
+                    <div class="til">CSS Classes</div>
+                    <code id="css-clas"></code>
+                </div>
+
+                <div class="contenido c-scss" style="display:none;">
+                    <div class="til">SCSS Variables</div>
+                    <code id="scss-var"></code>
+
+                    <div class="til">SCSS Classes</div>
+                    <code id="scss-clas"></code>
+                </div>
             </div>
 
-            <div class="contenido c-scss" style="display:none;">
-                <div class="til">SCSS Variables</div>
-                <code id="scss-var"></code>
-
-                <div class="til">SCSS Classes</div>
-                <code id="scss-clas"></code>
+            <div class="c-sketch">
+                <div class="info">To make this file works on <strong>Sketch</strong>, you will need the <a href="https://github.com/andrewfiorillo/sketch-palettes" target="_blank">Sketch Palettes plugin</a>. Load the downloaded palette with the plugin.</div>
             </div>
         </div>
 
